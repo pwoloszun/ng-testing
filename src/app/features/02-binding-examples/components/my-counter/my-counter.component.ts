@@ -10,11 +10,9 @@ export class MyCounterComponent implements OnInit {
   @Input() label: string;
   @Input() value = 10;
 
-  @Output() increment = new EventEmitter<number>();
-
   handleIncrementClick() {
+    // TODO: async variant
     this.value += 1;
-    this.increment.emit(this.value);
   }
 
   ngOnInit() {
