@@ -1,0 +1,105 @@
+<h3>Content projection</h3>
+
+<div>
+  <h5>Loader example</h5>
+  <div>
+    <button (click)="getDataHandler()">Get data</button>
+  </div>
+  <div>
+    <nts-loader [isLoading]="isFetching">
+      <ul>
+        <li *ngFor="let result of searchResults">
+          {{ result }}
+        </li>
+      </ul>
+    </nts-loader>
+  </div>
+</div>
+
+<hr/>
+
+<div>
+  <h5>Simple streamable cont example</h5>
+
+  <div class="my-box">
+    <div>
+      <button (click)="sendRequestHandler()">
+        Send Request
+      </button>
+      <button (click)="dataReceivedHandler()">
+        Data Received
+      </button>
+      <button (click)="errorOccurredHandler()">
+        Error Occurred
+      </button>
+    </div>
+
+    <nts-simple-streamable-container [dataStream]="myRequest$">
+      <div slot="content">
+        <p class="my-content">some fancy content</p>
+      </div>
+
+      <div slot="loading">
+        <p class="my-loading">Data is Loading...</p>
+      </div>
+
+      <div slot="error">
+        <p class="my-error">Sorry, some error occurred.</p>
+      </div>
+    </nts-simple-streamable-container>
+  </div>
+
+</div>
+
+
+<hr/>
+
+<div>
+  <h5>Better streamable container example</h5>
+
+  <div class="my-box">
+    <nts-better-streamable-container [dataStream]="myRequest$"
+                                     [loadingTemplate]="loadingTmpl"
+                                     [errorTemplate]="errorTmpl"
+                                     [contentTemplate]="contentTmpl">
+      <ng-template #contentTmpl let-data="data">
+        <div class="my-content">
+          Better data is:
+          <pre>
+            {{ data | json }}
+          </pre>
+        </div>
+      </ng-template>
+
+      <ng-template #loadingTmpl>
+        <p class="my-loading">Better Loading...</p>
+      </ng-template>
+
+      <ng-template #errorTmpl let-error="error">
+        <p class="my-error">Better error occurred: {{ error.message }}</p>
+      </ng-template>
+    </nts-better-streamable-container>
+  </div>
+
+</div>
+
+<div>
+  <h5>Template outlets example</h5>
+
+  <div>
+    <!-- parent -->
+    <ng-template #myTemplate >
+      <p>Hello my template</p>
+      <h6>Name</h6>
+    </ng-template>
+  
+  
+    <p>Result</p>
+    <!-- child -->
+    <div [ngTemplateOutlet]="myTemplate">
+      HERE
+    </div>
+  
+  </div>
+  
+</div>

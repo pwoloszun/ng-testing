@@ -1,0 +1,28 @@
+<p>player-details works!</p>
+
+<a *ngIf="team$ | async as team; else loadingTeam"
+   [routerLink]="['/routing-tasks/nba/teams', team.abbreviation]"
+   mat-raised-button
+   color="primary">
+  Team: {{ team.full_name }}
+</a>
+
+<hr />
+
+<div *ngIf="player$ | async as player; else loading">
+  <pre>
+    {{ player | json }}
+  </pre>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #loadingTeam>
+  <a disabled
+     mat-raised-button
+     color="primary">
+    Team: ...
+  </a>
+</ng-template>

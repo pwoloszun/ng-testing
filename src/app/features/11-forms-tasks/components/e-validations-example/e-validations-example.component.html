@@ -1,0 +1,50 @@
+<h3>e-validations-example form</h3>
+
+<form [formGroup]="myForm"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <label>
+      Last Name
+      <input formControlName="fullName" />
+    </label>
+    <span class="my-error"
+          *ngIf="fullNameCtrl.errors">
+      {{ fullNameCtrl.errors | json }}
+    </span>
+  </div>
+
+  <div>
+    <label>
+      Title
+      <input formControlName="title" />
+    </label>
+    <span class="my-error"
+          *ngIf="titleCtrl.errors">
+      {{ titleCtrl.errors | json }}
+    </span>
+  </div>
+
+  <div>
+    <label>
+      Date of Birth
+      <input formControlName="dateOfBirth" />
+    </label>
+    <span *ngIf="dobCtrl.errors">{{ dobCtrl.errors | json }}</span>
+  </div>
+
+  <div>
+    <label>
+      National ID
+      <input formControlName="nationalId" />
+    </label>
+    <span *ngIf="nationalIdCtrl.errors">{{ nationalIdCtrl.errors | json }}</span>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<nts-form-info [formGroup]="myForm"></nts-form-info>

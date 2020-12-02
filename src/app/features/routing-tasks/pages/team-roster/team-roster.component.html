@@ -1,0 +1,13 @@
+<h5>Team roster</h5>
+
+<ul *ngIf="teamRoster$ | async as players; else loading">
+  <li *ngFor="let player of players">
+    <a [routerLink]="['/routing-tasks/nba/players', player.id]">
+      {{ player.last_name }}, {{ player.first_name }}
+    </a>
+  </li>
+</ul>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

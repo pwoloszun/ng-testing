@@ -1,0 +1,25 @@
+<mat-card class="todos-list-container">
+  <mat-card-title>Todos List ({{items?.length}})</mat-card-title>
+
+  <mat-list>
+    <mat-list-item *ngFor="let todo of items" role="listitem">
+      <mat-divider></mat-divider>
+      <h2 matLine>
+        {{todo.title}}
+      </h2>
+      <button
+        (click)="deleteTodo(todo)"
+        mat-icon-button
+        class="remove-btn"
+      >
+        <mat-icon matListIcon>delete_forever</mat-icon>
+      </button>
+
+      <p matLine>
+        <span class="demo-2"> {{todo.description}} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+
+  <mat-progress-bar *ngIf="!hasItems()" mode="indeterminate"></mat-progress-bar>
+</mat-card>

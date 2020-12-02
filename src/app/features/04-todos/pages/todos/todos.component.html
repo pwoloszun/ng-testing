@@ -1,0 +1,12 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col graybox">
+  </div>
+  <div class="mdl-cell mdl-cell--6-col graybox">
+
+    <nts-todos-list [items]="todos$ | async"
+                    (deleteItem)="deleteTodo($event)"></nts-todos-list>
+
+    <nts-todos-form (createItem)="createTodo($event)"></nts-todos-form>
+
+  </div>
+</div>

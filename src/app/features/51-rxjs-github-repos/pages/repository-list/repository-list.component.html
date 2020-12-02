@@ -1,0 +1,47 @@
+<h1>Github Repositories Search</h1>
+
+<label class="mt-2">
+  <span>Repository name:</span>
+  <form [formGroup]="searchForm">
+    <input formControlName="searchQuery" type="text" class="ml-2" />
+  </form>
+</label>
+
+<div *ngIf="(searchResults$ | async) as searchResults">
+  <h2>Repositories</h2>
+
+  <div *ngIf="searchResults.length > 0" fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxFlexFill>
+    <div fxFlex="50">
+      <div *ngFor="let result of searchResults" fxLayout="row">
+        <div fxFlex="70">
+          {{ result.name }}
+        </div>
+        <button (click)="selectRepoHandler(result)" fxFlex="30">Owner info</button>
+      </div>
+    </div>
+
+    <div fxFlex="50">
+      <div *ngIf="(selectedOwner$ | async) as selectedOwner">
+        <h4>{{ selectedOwner.login }}</h4>
+
+        <img [attr.src]="selectedOwner.avatar_url" width="200" height="auto" alt="avatar" />
+      </div>
+
+      <nts-loader [isLoading]="isLoading$ | async">
+        <div *ngIf="(ownerAllRepos$ | async) as ownerAllRepos">
+          <h6>All Repos</h6>
+          <div *ngFor="let repo of ownerAllRepos">
+            {{ repo.name }}
+          </div>
+        </div>
+      </nts-loader>
+
+    </div>
+  </div>
+
+  <ng-template #noResultsCont>
+    <h4>
+      No results found
+    </h4>
+  </ng-template>
+</div>

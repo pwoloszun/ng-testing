@@ -1,0 +1,20 @@
+.my-error {
+  padding: 1em;
+  background-color: #f00;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.my-loading {
+  padding: 6px;
+  border: 1px solid #000;
+  font-style: italic;
+}
+
+.my-box {
+  border: 2px solid #000;
+  padding: 6px;
+  width: 66%;
+  margin: 0 auto;
+}

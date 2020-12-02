@@ -1,0 +1,83 @@
+<form [formGroup]="myForm"
+      (ngSubmit)="submitHandler($event)"
+      class="myForm"
+>
+  <h5>My Form Validation task</h5>
+
+  <div>
+    <input formControlName="fullName"
+           placeholder="Your name?"
+           type="text"
+    />
+  </div>
+
+  <div>
+    <input formControlName="age"
+           placeholder="Enter your age"
+           type="number"
+    />
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>
+      <input formControlName="areDetailsEnabled"
+             type="checkbox"
+      />
+      Enable details
+    </label>
+  </div>
+
+  <div *ngIf="areDetailsEnabledControl.value" class="checkboxCont">
+    <input formControlName="height"
+           type="number"
+           placeholder="Your height"
+    />
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>Select Country</label>
+    <select formControlName="country">
+      <option *ngFor="let country of allCountries" [ngValue]="country.id">
+        {{ country.name }}
+      </option>
+    </select>
+  </div>
+
+  <hr/>
+
+  <div>
+    <label>Select your interest type</label>
+    <select formControlName="selectedInterestType">
+      <option *ngFor="let interestType of allInterestTypes" [ngValue]="interestType.id">
+        {{ interestType.name }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <p>
+      <label>Choose your Interests</label>
+    </p>
+
+    <label *ngFor="let interestControl of availableInterestsControls; let i = index">
+      <input [formControl]="interestControl"
+             type="checkbox"
+      />
+      {{ availableInterestLabels[i] }}
+    </label>
+  </div>
+
+
+  <hr/>
+
+  <div>
+    <button [disabled]="!myForm.valid" type="submit">Submit</button>
+  </div>
+
+  <hr/>
+  <nts-form-info [formGroup]="myForm"></nts-form-info>
+</form>

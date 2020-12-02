@@ -1,0 +1,11 @@
+<h5>Team details</h5>
+
+<div *ngIf="team$ | async as team; else loading">
+  <pre>
+    {{ team | json }}
+  </pre>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -1,0 +1,68 @@
+<h3>d-dynamic-forms-example</h3>
+
+<form [formGroup]="myForm"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <input formControlName="listName"
+           placeholder="Enter list name"
+           type="text" />
+  </div>
+
+  <div *ngFor="let singleToppingCtrl of userRolesArrayCtrl.controls; let i=index;">
+    <label>
+      <input type="checkbox"
+             [formControl]="singleToppingCtrl" />
+      {{ availableUserRoles[i].name }}
+    </label>
+  </div>
+
+  <div>
+    Extras:
+    <button mat-raised-button
+            (click)="createExtra()"
+            color="primary">Add</button>
+
+    <div *ngFor="let extrasCtrl of extrasArrayCtrl.controls; let i=index">
+      <input [formControl]="extrasCtrl"
+             type="text" />
+      <button mat-raised-button
+              (click)="removeExtra(i)">Remove</button>
+    </div>
+  </div>
+
+  <div>
+    Other Users:
+    <button mat-raised-button
+            (click)="createOtherUser()"
+            color="primary">Add User</button>
+
+    <div *ngFor="let userGroupCtrl of otherUsersArrayCtrl.controls; let i=index"
+         [formGroup]="userGroupCtrl">
+      <input formControlName="name"
+             placeholder="User Name"
+             type="text" />
+      <input formControlName="age"
+             placeholder="User Age"
+             type="number" />
+      <label>
+        <input formControlName="hasAgreed"
+               type="checkbox" />
+        Agree?
+      </label>
+
+      <button mat-raised-button
+              (click)="removeOtherUser(i)">Remove User</button>
+
+      <hr />
+    </div>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+
+<nts-form-info [formGroup]="myForm"></nts-form-info>

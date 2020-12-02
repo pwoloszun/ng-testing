@@ -1,0 +1,8 @@
+<p>
+<h3>Google Map</h3>
+<p>Selected Title: {{ selectedCity?.title }}</p>
+
+<nts-leaflet-map [geoObjects]="cities$ | async"
+                 [selected]="selectedCity"
+                 (markerClick)="onPlaceClick($event)">
+</nts-leaflet-map>

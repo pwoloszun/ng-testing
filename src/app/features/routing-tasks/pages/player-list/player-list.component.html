@@ -1,0 +1,23 @@
+<div fxLayout="column"
+     fxLayoutAlign="center stretch">
+
+  <nts-nba-menu></nts-nba-menu>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center">
+
+  <h5>All players</h5>
+
+  <ul *ngIf="players$ | async as players; else loading">
+    <li *ngFor="let player of players">
+      <a [routerLink]="[player.id]">
+        {{ player.last_name }}, {{ player.first_name }}
+      </a>
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

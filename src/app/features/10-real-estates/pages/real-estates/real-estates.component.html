@@ -1,0 +1,22 @@
+<h5>Real Estates</h5>
+
+<div fxLayout="row"
+     fxLayoutAlign="center center">
+  <div fxFlex="66">
+    <nts-leaflet-map [geoObjects]="manageService.realEstates$ | async"
+                     [selected]="manageService.selectedRealEstate$ | async"
+                     (markerClick)="onRealEstateClick($event)"></nts-leaflet-map>
+  </div>
+
+  <div fxFlex="33">
+    <nts-estate-details [item]="manageService.selectedRealEstate$ | async"></nts-estate-details>
+  </div>
+
+</div>
+
+<div>
+  <nts-data-table [items]="manageService.realEstates$ | async"
+                  [selectedItem]="manageService.selectedRealEstate$ | async"
+                  [metaData]="listHeaders"
+                  (itemClick)="onRealEstateClick($event)"></nts-data-table>
+</div>

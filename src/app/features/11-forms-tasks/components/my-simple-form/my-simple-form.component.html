@@ -1,0 +1,61 @@
+<form [formGroup]="myForm"
+      (ngSubmit)="submitHandler($event)"
+      class="my-form-cont"
+>
+  <h3>My simple form</h3>
+
+  <div>
+    Email:
+    <input formControlName="email" type="email" required/>
+  </div>
+
+  <div>
+    Password:
+    <input formControlName="password" type="password" required/>
+  </div>
+
+  <div formGroupName="primaryAddress">
+    Primary Address:
+
+    <div>
+      City:
+      <select formControlName="city">
+        <option value="" disabled>Choose your city</option>
+        <option *ngFor="let city of cities" [ngValue]="city.value">
+          {{ city.label }}
+        </option>
+      </select>
+    </div>
+    <div>
+      Street:
+      <input formControlName="street" type="text"/>
+    </div>
+  </div>
+
+  <div>
+    Do you want to receive emails:
+    <div *ngFor="let emailOption of emailsFrequencyOptions">
+      <label>
+        <input formControlName="emailsFrequency"
+               [value]="emailOption.value"
+               type="radio"
+        />
+        {{ emailOption.label }}
+      </label>
+    </div>
+  </div>
+
+  <div>
+    <label>
+      <input formControlName="isAgreementConfirmed" type="checkbox" required/>
+      Some Agreement
+    </label>
+  </div>
+
+  <div>
+    <button type="submit">Send</button>
+  </div>
+
+  <nts-form-info [formGroup]="myForm"></nts-form-info>
+</form>
+

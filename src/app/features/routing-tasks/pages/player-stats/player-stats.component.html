@@ -1,0 +1,10 @@
+<h5>Player stats</h5>
+<div *ngIf="playerStats$ | async as stats; else loading">
+  <pre>
+    {{ stats | json }}
+  </pre>
+</div>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

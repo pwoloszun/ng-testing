@@ -1,0 +1,53 @@
+<h3>a-build-form-example</h3>
+
+<form [formGroup]="formGroupOne"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <input formControlName="login"
+           placeholder="Enter Login"
+           type="text" />
+  </div>
+
+  <div>
+    <input formControlName="password"
+           placeholder="Your Password"
+           type="password" />
+  </div>
+
+  <div>
+    <input formControlName="luckyNumber"
+           placeholder="Your Lucky Number"
+           type="number" />
+  </div>
+
+  <div>
+    <input formControlName="dob"
+           placeholder="Your Date of Birth"
+           type="date" />
+  </div>
+
+  <div>
+    <label>
+      <input type="checkbox"
+             formControlName="hasAgreed" />
+      Do you agree?
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Your comments:
+      <textarea formControlName="comments"
+                placeholder="Comments"></textarea>
+    </label>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+
+<nts-form-info [formGroup]="formGroupOne"></nts-form-info>

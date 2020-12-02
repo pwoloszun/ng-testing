@@ -1,0 +1,49 @@
+<h3>b-collection-in-form-example</h3>
+
+<form [formGroup]="pizzaForm"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <input formControlName="name"
+           placeholder="Pizza name"
+           type="text" />
+  </div>
+
+  <div>
+    <label>Select Dough Thickness</label>
+    <select formControlName="doughThickness">
+      <option *ngFor="let thicknessOption of availableDoughThickness"
+              [ngValue]="thicknessOption.id">
+        {{ thicknessOption.text }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngFor="let singleToppingCtrl of toppingsArrayCtrl.controls; let i=index;">
+    <label>
+      <input type="checkbox"
+             [formControl]="singleToppingCtrl" />
+      {{ availableToppings[i].name }}
+    </label>
+  </div>
+
+  <div>
+    Choose Pizza Sauce:
+    <div *ngFor="let sauce of availableSauces">
+      <label>
+        <input formControlName="selectedSauce"
+               [value]="sauce.id"
+               type="radio" />
+        {{ sauce.name }}
+      </label>
+    </div>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+
+<nts-form-info [formGroup]="pizzaForm"></nts-form-info>

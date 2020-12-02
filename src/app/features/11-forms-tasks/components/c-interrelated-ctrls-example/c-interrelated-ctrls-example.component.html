@@ -1,0 +1,27 @@
+<h3>c-interrelated-ctrls-example form</h3>
+
+<form [formGroup]="myForm"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <label>
+      Date of Birth
+      <input formControlName="dateOfBirth"
+             type="date" />
+    </label>
+  </div>
+
+  <div>
+    <label>
+      National ID
+      <input formControlName="nationalId" />
+    </label>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<nts-form-info [formGroup]="myForm"></nts-form-info>

@@ -1,0 +1,19 @@
+<ng-container [ngSwitch]="currentStatus">
+
+  <ng-container *ngSwitchCase="allStatuses.isEmitting"
+                [ngTemplateOutlet]="contentTemplate"
+                [ngTemplateOutletContext]="{data: receivedData}"
+  ></ng-container>
+
+  <ng-container *ngSwitchCase="allStatuses.isLoading"
+                [ngTemplateOutlet]="loadingTemplate"
+  ></ng-container>
+
+  <ng-container *ngSwitchCase="allStatuses.errorClosed"
+                [ngTemplateOutlet]="errorTemplate"
+                [ngTemplateOutletContext]="{error: receivedError}"
+  ></ng-container>
+
+  <ng-container *ngSwitchDefault></ng-container>
+
+</ng-container>

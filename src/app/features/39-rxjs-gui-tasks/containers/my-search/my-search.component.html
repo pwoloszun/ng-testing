@@ -1,0 +1,24 @@
+<mat-card class="my-search-container">
+  <mat-card-header>
+    <mat-card-title>My Search</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="mat-search-content">
+    <div>
+      <mat-form-field>
+        <input [formControl]="searchText"
+               matInput
+               placeholder="Search"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <h5>Search results</h5>
+      <ul>
+        <li *ngFor="let result of searchResults$ | async">
+          {{ result }}
+        </li>
+      </ul>
+    </div>
+  </mat-card-content>
+</mat-card>

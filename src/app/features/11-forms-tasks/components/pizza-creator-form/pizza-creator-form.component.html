@@ -1,0 +1,74 @@
+<h3>Pizza Creator</h3>
+
+<form [formGroup]="pizzaForm"
+      (ngSubmit)="submitHandler()"
+      class="myForm">
+
+  <div>
+    <select formControlName="pizzaTemplate">
+      <option *ngFor="let template of pizzaTemplates$ | async"
+              [ngValue]="template">
+        {{ template.name }}
+      </option>
+    </select>
+  </div>
+
+  <hr />
+
+  <div>
+    <input formControlName="name"
+           placeholder="Pizza name"
+           type="text" />
+  </div>
+
+  <div>
+    <label>Select Dough Thickness</label>
+    <select formControlName="doughThickness">
+      <option *ngFor="let thicknessOption of availableDoughThickness"
+              [ngValue]="thicknessOption.id">
+        {{ thicknessOption.text }}
+      </option>
+    </select>
+  </div>
+
+  <div *ngFor="let singleToppingCtrl of toppingsArrayCtrl.controls; let i=index;">
+    <label>
+      <input type="checkbox"
+             [formControl]="singleToppingCtrl" />
+      {{ availableToppings[i].name }}
+    </label>
+  </div>
+
+  <div>
+    Choose Pizza Sauce:
+    <div *ngFor="let sauce of availableSauces">
+      <label>
+        <input formControlName="selectedSauce"
+               [value]="sauce.id"
+               type="radio" />
+        {{ sauce.name }}
+      </label>
+    </div>
+  </div>
+
+  <div>
+    Extras:
+    <button mat-raised-button
+            (click)="createExtra()"
+            color="primary">Add</button>
+
+    <div *ngFor="let extrasCtrl of extrasArrayCtrl.controls; let i=index">
+      <input [formControl]="extrasCtrl"
+             type="text" />
+      <button mat-raised-button
+              (click)="removeExtra(i)">Remove</button>
+    </div>
+  </div>
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+</form>
+
+<nts-form-info [formGroup]="pizzaForm"></nts-form-info>

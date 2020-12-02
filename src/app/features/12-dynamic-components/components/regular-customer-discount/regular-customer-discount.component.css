@@ -1,0 +1,9 @@
+.regular-discount {
+  border: 1px solid #000;
+  padding: 1em;
+  width: 50%;
+  margin: 0 auto;
+
+  background-color: mediumaquamarine;
+  color: #fff;
+}

@@ -1,0 +1,13 @@
+<ng-container [ngSwitch]="currentStatus">
+
+  <ng-content *ngSwitchCase="allStatuses.isEmitting"
+              select="[slot='content']"></ng-content>
+
+  <ng-content *ngSwitchCase="allStatuses.isLoading"
+              select="[slot='loading']"></ng-content>
+
+  <ng-content *ngSwitchCase="allStatuses.errorClosed"
+              select="[slot='error']"></ng-content>
+
+  <ng-container *ngSwitchDefault></ng-container>
+</ng-container>

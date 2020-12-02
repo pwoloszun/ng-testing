@@ -1,0 +1,21 @@
+<h3>Refs Examples</h3>
+
+<!-- <nts-view-child-example></nts-view-child-example> -->
+
+<hr />
+
+<nts-content-child-example>
+
+  <nts-person-details></nts-person-details>
+  <div>
+    <nts-person-details></nts-person-details>
+    <nts-person-details #thirdPD></nts-person-details>
+  </div>
+
+  <h6 #myHeader>1st header</h6>
+  <div>
+    <h6 #secondHeader #myHeader>2nd header</h6>
+  </div>
+  <h6 #myHeader>3rd header</h6>
+
+</nts-content-child-example>
